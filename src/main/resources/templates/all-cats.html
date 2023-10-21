@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-striped">
+    <h2>Коты</h2>
+    <thead>
+    <tr>
+        <th scope="col">Имя</th>
+        <th scope="col">Порода</th>
+        <th scope="col">Цвет</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:each="cats : ${cats}">
+        <tr>
+            <td th:text="${cats.Name}"></td>
+            <td th:text="${cats.Breed}"></td>
+            <td th:text="${cats.Color}"></td>
+            <td>
+                <a th:href="@{/cats/{id}(id=${cats.Id})}">Перейти</a>
+            </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+<form action="/cats/create-cat" method="get">
+    <button class="btn btn-secondary">Создать кота</button>
+</form>
+</body>
+</html>

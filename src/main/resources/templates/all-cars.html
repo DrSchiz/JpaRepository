@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-striped">
+    <h2>Машины</h2>
+    <form method="post" action="/cars/">
+        <input type="search" name="name" placeholder="Название машины">
+        <button type="submit" class="btn btn-secondary">Поиск</button>
+    </form>
+
+    <thead>
+    <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Модель</th>
+        <th scope="col">Цена</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:each="cars : ${cars}">
+        <tr>
+            <td th:text="${cars.name}"></td>
+            <td th:text="${cars.Model}"></td>
+            <td th:text="${cars.Price}"></td>
+            <td>
+                <a th:href="@{/cars/{id}(id=${cars.Id})}">Перейти</a>
+            </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+<form action="/cars/create-car" method="get">
+    <button class="btn btn-secondary">Создать машину</button>
+</form>
+</body>
+</html>
